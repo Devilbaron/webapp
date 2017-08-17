@@ -29,17 +29,14 @@ public class ServletTest extends HttpServlet{
         } finally {
             out.close();
         }
-        return ;
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         try {
-           String data = new ItemData().data();
-//            out.println(data);
-            Item t = new Item(1,"佳缘",869,856,"2017-08-16");
-//            Item t = new Item(1,"佳缘",869,856,data);
+//            Item t = new Item(2,"佳缘",869,856,"2017-08-17");
+            Item t = new Item(4,"丝芙兰",0,160,new ItemData().data());
             ItemDAO udao = new ItemDAO();
             if (udao.addItem(t)){
                 out.println("yes");
@@ -47,6 +44,9 @@ public class ServletTest extends HttpServlet{
             {
                 out.println("no");
             }
+            //查询数据库
+//            new ItemDAO().SelectSQL();
+
         }catch (Exception ex)
         {
             ex.printStackTrace();
