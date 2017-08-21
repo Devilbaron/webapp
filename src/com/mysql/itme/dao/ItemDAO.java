@@ -3,6 +3,7 @@ package com.mysql.itme.dao;
 import com.mysql.itme.entity.Item;
 import com.mysql.itme.utill.Helper;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,32 +50,60 @@ public class ItemDAO {
             }
         }
     }
-    public boolean upItem(int id,int n)
-    {
-        String sql = "insert into table_item values (?,?,?,?,?)";
+    public boolean upItem(int id,int n) {
+//        String sql = "insert into table_item SET item_id = "+ n +" WHERE item_id =  )";
         Connection conn = null;
         Statement stmt = null;
-
-        try {
 
             try {
                 conn = Helper.getConnection();
                 stmt = conn.createStatement();
-                String sql = "insert into table_item SET item_tmp_count = n WHERE item_id =  )";
+                String sql = "UPDATE table_item SET item_tmp_count = " + (n + 1) + " WHERE item_id = "+ id +";";
                 stmt.executeUpdate(sql);
 
-            int result = stmt.executeUpdate();
-            if (result > 0)
-            {
-                return true;
-            }else
-            {
+                int result = stmt.executeUpdate(sql);
+                if (result > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
                 return false;
+            } finally {
+                try {
+//                    stmt.close();
+//                    conn.close();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+    }
+
+    public void SelectTmpCount(String name,String data)
+    {
+        String sql = "Select * from table_item WHERE item_name = '"+ name +"'&& item_day = '"+ data+"';";
+        Connection conn = null;//表示数据库连接的对象
+        Statement stmt = null;//表示数据库更新操作
+        try{
+            conn =Helper.getConnection();
+            ResultSet result = null;//表示接受数据库查询到的结果
+
+            stmt = conn.createStatement();//tatement接口需要通过connection接口进行实例化操作
+
+            result = stmt.executeQuery(sql);//执行sql语句，结果集放在result中
+
+            while(result.next()){//判断是否还有下一行
+                int tmp = result.getInt("item_tmp_count");//获取数据库person表中name字段的值
+                int tid = result.getInt("item_id");//获取数据库person表中name字段的值
+                System.out.println(tmp);
+                System.out.println(tid);
+                upItem(tid,tmp);
+
             }
         }catch (Exception ex)
         {
             ex.printStackTrace();
-            return false;
         }finally {
             try {
                 stmt.close();
@@ -83,6 +112,7 @@ public class ItemDAO {
             {
                 ex.printStackTrace();
             }
+
         }
     }
 
@@ -102,6 +132,7 @@ public class ItemDAO {
            while(result.next()){//判断是否还有下一行
                String name = result.getString("name");//获取数据库person表中name字段的值
                System.out.println(name);
+
            }
        }catch (Exception ex)
        {
