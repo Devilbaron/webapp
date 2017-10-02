@@ -14,7 +14,6 @@
                            $('input[name=tDay]').css('border','1px solid red')
                        }
                        $('#hcontent').html(data);
-                       
                    });
                });
            });
