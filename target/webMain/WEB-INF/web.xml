@@ -17,5 +17,14 @@
         <url-pattern>/Servlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AjaxServlet</servlet-name>
+        <servlet-class>com.webapp.AjaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjaxServlet</servlet-name>
+        <url-pattern>/AjaxServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

@@ -132,7 +132,6 @@ public class ItemDAO {
            while(result.next()){//判断是否还有下一行
                String name = result.getString("name");//获取数据库person表中name字段的值
                System.out.println(name);
-
            }
        }catch (Exception ex)
        {

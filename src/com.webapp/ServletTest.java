@@ -18,7 +18,6 @@ public class ServletTest extends HttpServlet{
         req.setCharacterEncoding("utf-8");
         req.getRequestDispatcher("success1.jsp").forward(req,resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
