@@ -26,5 +26,22 @@
         <url-pattern>/AjaxServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.webapp.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsetServlet</servlet-name>
+        <servlet-class>com.webapp.InsetServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsetServlet</servlet-name>
+        <url-pattern>/InsetServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>

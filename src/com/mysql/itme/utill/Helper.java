@@ -9,9 +9,9 @@ import java.sql.DriverManager;
 public class Helper {
     private static Connection conn;//数据库连接对象
     //驱动
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     //数据库地址
-    private static final String URL = "jdbc:mysql://localhost:3306/users";
+    private static final String URL = "jdbc:mysql://localhost:3306/users?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false";
     //用户名密码
     private static final String USERNAME = "root";
     private static final String PASSWORD = "123456";

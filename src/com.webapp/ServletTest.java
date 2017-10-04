@@ -23,7 +23,6 @@ public class ServletTest extends HttpServlet{
         resp.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();
-        resp.setContentType("text/html;charset=UTF-8");
         resp.sendRedirect("success.jsp");
 //        String name = req.getParameter("item_name");
 //        String day = req.getParameter("item_day");
